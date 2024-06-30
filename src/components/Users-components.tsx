@@ -6,16 +6,10 @@ import UserComponents from "./User-components";
 const UsersComponents = () => {
     const [users, setUsers] = useState<IUser[]>([])
     useEffect(() => {
-
-fetch('https://dummyjson.com/users')
-        .then(value => value.json())
-        .then(value => {
-            value.user
+        getAllUsers().then((response:IUser[])=>{
+            setUsers(response);
         })
     }, []);
-
-
-
     return (
         <div>
             <hr/>
@@ -23,15 +17,11 @@ fetch('https://dummyjson.com/users')
                 {
                     users.map((user) => (
                         <UserComponents
-                            key={user.id}
                             user={user}
                         />))
                 }
             </div>
             <hr/>
-
-
-
         </div>
     );
 };

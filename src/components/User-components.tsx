@@ -14,7 +14,7 @@ const UserComponents:FC<IProps> = ({user}) => {
     lastName,
     age,
     image,
-    password,birthData}=user
+    password}=user
 
     return (
         <div>
