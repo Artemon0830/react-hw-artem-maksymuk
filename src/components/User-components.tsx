@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {IUser} from "../model/IUser";
 
+
 interface IProps {
 user:IUser
 }
@@ -21,16 +22,17 @@ const UserComponents:FC<IProps> = ({user}) => {
             <h2>{id}</h2>
             <p>firstName:{firstName}</p>
             <p>lastName:{lastName}</p>
-            <p>email:{email};
-            phone:{phone}</p>
-            <p>gender:{gender},age:{age}</p>
-            <img src={image} alt={username}/>
-            <p>Details of User:
-            username:{username}
-            password:{password}
-            </p>
-            {/*<button onClick={()=>*/}
-            {/*getPosts}></button>*/}
+            <ul>
+                <li>email:'{email}';</li>
+                <li>phone:{phone};</li>
+                <li>gender:{gender}</li>
+                <li>age:{age}</li>
+                <img src={image} alt={username}/>
+                <p>Details of User:</p>
+                <li>username:{username}</li>
+                <li>password:{password}</li>
+            </ul>
+
         </div>
     );
 };
