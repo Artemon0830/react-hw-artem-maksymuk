@@ -9,5 +9,9 @@ const getAllUsers = async () => {
     console.log("data.users", data.users);
     return data.users;
 };
-
-export { getAllUsers };
+const  getPostsOfUserById = async (id:number)=>{
+    const {data}= await axiosInstance.get('users' +id+ '/posts' )
+    console.log(data.posts)
+    return data.posts
+}
+export { getAllUsers,getPostsOfUserById  };

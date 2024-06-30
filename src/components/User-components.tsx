@@ -1,11 +1,13 @@
 import React, {FC} from 'react';
 import {IUser} from "../model/IUser";
+import {getPostsOfUserById} from "../services/api.servise";
 
 
 interface IProps {
-user:IUser
+user:IUser;
+    getPosts:(id:number)=>void
 }
-const UserComponents:FC<IProps> = ({user}) => {
+const UserComponents:FC<IProps> = ({user,getPosts}) => {
     let {id,
     firstName,
     username,
@@ -32,7 +34,9 @@ const UserComponents:FC<IProps> = ({user}) => {
                 <li>username:{username}</li>
                 <li>password:{password}</li>
             </ul>
-
+<button onClick={()=>{
+    getPosts(user.id);
+}} >Posts of User </button>
         </div>
     );
 };
