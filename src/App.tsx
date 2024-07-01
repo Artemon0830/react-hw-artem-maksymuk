@@ -4,7 +4,7 @@ import {UsersComponents} from "./components/Users-components";
 
 const App:FC = () => {
   return(
-      <div>
+      <div className="App">
           <UsersComponents/>
 
 

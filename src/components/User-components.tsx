@@ -1,13 +1,15 @@
 import React, {FC} from 'react';
 import {IUser} from "../model/IUser";
-
+import {PostsComponents} from "./PostsComponents";
+import {IPost} from "../model/IPost"
 
 
 interface IProps {
 user:IUser;
     getPosts:(id:number)=>void
+    setSkipValue:(value:number)=>void
 }
-const UserComponents:FC<IProps> = ({user,getPosts}) => {
+const UserComponents:FC<IProps> = ({user,getPosts,setSkipValue}) => {
     let {id,
     firstName,
     username,
@@ -34,9 +36,21 @@ const UserComponents:FC<IProps> = ({user,getPosts}) => {
                 <li>username:{username}</li>
                 <li>password:{password}</li>
             </ul>
-<button onClick={()=>{
-    getPosts(user.id);
-}} >Posts of User </button>
+            <button onClick={() => {
+                getPosts(user.id);
+            }}>Posts of User
+            </button>
+            <button onClick={() => {
+                setSkipValue(-5);
+                console.log('dec');
+            }}>prev
+            </button>
+            <button onClick={() => {
+
+                setSkipValue(+5);
+                console.log('inc');
+            }}>next
+            </button>
         </div>
     );
 };
