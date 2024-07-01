@@ -2,17 +2,22 @@ import React, {FC} from 'react';
 import {IPost} from "../model/IPost";
 
 interface IProps{
-    posts:IPost[]
+    posts:IPost
 
 }
 const PostsComponents:FC<IProps> = ({posts}) => {
+    const {id,title,body,tags,reactions,userId}=posts
     return (
         <div>
-            {
-                posts.map(value =><li key={value.id} >{value.id}:{value.title}</li> )
-            }
+            {id}
+            {title}
+            {body}
+            {reactions}
+            {userId}
+            {tags}
+
         </div>
     );
 };
 
-export default PostsComponents;
+export  {PostsComponents};

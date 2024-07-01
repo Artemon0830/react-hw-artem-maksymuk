@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {IUser} from "../model/IUser";
-import {getPostsOfUserById} from "../services/api.servise";
+
 
 
 interface IProps {

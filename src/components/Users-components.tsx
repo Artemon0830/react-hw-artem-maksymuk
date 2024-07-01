@@ -3,7 +3,7 @@ import { IUser } from "../model/IUser";
 import {getAllUsers, getPostsOfUserById} from "../services/api.servise";
 import UserComponents from "./User-components";
 import {IPost} from "../model/IPost";
-import PostsComponents from "./PostsComponents";
+import {PostsComponents} from "./PostsComponents";
 
 const UsersComponents = () => {
     const [users, setUsers] = useState<IUser[]>([]);
@@ -36,13 +36,12 @@ const UsersComponents = () => {
 
             </div>
             <hr />
-            <div>
-                {
-                    <PostsComponents posts={posts}/>
+            <div>{
+                posts.map((post)=><PostsComponents key={post.id} posts={post}/>)
                 }
             </div>
         </div>
     );
 
 }
-export default UsersComponents;
+export {UsersComponents};
