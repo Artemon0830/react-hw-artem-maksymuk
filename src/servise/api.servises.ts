@@ -4,15 +4,16 @@ let instance = axios.create({
      baseURL: 'https://dummyjson.com',
     headers:{"Content-Type":"application/json"}
     });
-const getAllUsers = async () => {
-  return await instance.get('/users').then((response)=>response.data)
-}
-const getAllPosts = async (id:number) => {
-    return await instance.get('/users/'+id+'/posts').then((response)=>response.data)
+const getAllUsers =async () => {
+    return await instance.get('/users').then((response)=>response.data);
 
 }
-export {getAllUsers,getAllPosts}
-//
+
+// const getAllPosts = async (id:number) => {
+//     const { data } = await instance.get('/users/'+id+'/posts')
+//     return data
+export {getAllUsers}
+
 // Виконуємо класовими компонентами
 // https://dummyjson.com/docs/users
 //     отримати та вивести інфу по всіх юзерах. Для запитів використовуємо axios та розносимо логіку в сервіси

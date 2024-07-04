@@ -11,14 +11,15 @@ export class UsersComponents extends React.Component<{},MyState> {
     state:MyState ={
         users:[]
     }
+
     componentDidMount() {
-        getAllUsers().then(value => this.setState({...this.state,users:value}))
-    }
+        getAllUsers().then(value =>this.setState({users:value}))
+                     }
 
     render() {
          return (
              <div>
-                 {this.state.users.map(user=>(<li>{user.name}</li>) )}
+                 {this.state.users.map(user=>(<div key={user.id}>{user.name}</div>) )}
              </div>
          )
      }
