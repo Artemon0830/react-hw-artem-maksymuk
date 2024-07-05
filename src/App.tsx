@@ -5,7 +5,7 @@ import {UsersComponents} from "./Components/UsersComponents";
 const App:FC = () => {
   return(
       <div>
-<UsersComponents/>
+<UsersComponents />
 
       </div>
   );

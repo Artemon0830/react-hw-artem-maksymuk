@@ -5,14 +5,17 @@ let instance = axios.create({
     headers:{"Content-Type":"application/json"}
     });
 const getAllUsers =async () => {
-    return await instance.get('/users').then((response)=>response.data);
+    return await instance.get('/users').then((response)=> response.data.users)
 
+}
+const getPostsOfUser = async (id:number) => {
+ return await instance.get( '/users/' +id + '/posts').then((value) => value.data.posts )
 }
 
 // const getAllPosts = async (id:number) => {
 //     const { data } = await instance.get('/users/'+id+'/posts')
 //     return data
-export {getAllUsers}
+export {getAllUsers,getPostsOfUser}
 
 // Виконуємо класовими компонентами
 // https://dummyjson.com/docs/users
