@@ -18,9 +18,11 @@ const FormComponent = () => {
     });
 
     const [posts, setPosts] = useState<IPropsForm[]>([]);
-
+    postsOfUsers().then((value:IPropsForm[]) =>{
+        setPosts([...value])
+    });
     const cumstorHandle = async (formDataProps: IPropsForm) => {
-        await fetch('https://jsonplaceholder.typicode.com/posts', {
+        await fetch('https://jsonplaceholder.typicode.com/posts/101', {
             method: 'POST',
             body: JSON.stringify(formDataProps),
             headers: {
@@ -29,9 +31,7 @@ const FormComponent = () => {
         })
             .then((response) => response.json())
             .then((json) => setPosts(prevPosts => [...prevPosts, json]));
-            postsOfUsers().then((value:IPropsForm[]) =>{
-                setPosts([...value])
-            });
+
     };
 
     return (
