@@ -1,0 +1,39 @@
+.formContainer{
+display: flex;
+    flex-direction: column;
+width: 300px;
+}
+.label{
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.input{
+    font-size: 20px;
+    border-radius: 5px;
+    border: 2px solid chocolate;
+    padding: 5px;
+}
+.error{
+    color: red;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   width: 250px;
+    height: 40px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: chartreuse;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.button:disabled {
+    background-color:grey;
+}
