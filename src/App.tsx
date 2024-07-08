@@ -1,11 +1,10 @@
 import React, {FC, useReducer} from 'react';
 import './App.css';
 import FormComponent from "./form/FormComponent";
-
 const App:FC = () => {
   return(
       <div>
-<FormComponent />
+<FormComponent  />
 
 
 

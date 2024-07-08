@@ -1,34 +1,27 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { postValidator } from "../validators/post.validator";
 import styles from './FormComponent.module.css';
-import {postsOfUsers} from "../service/API";
-import {IPropsForm} from '../module/IPropsForm';
+import { postsOfUsers, postAdd } from "../service/API";
+import { IPropsForm } from '../module/IPropsForm';
 
 const FormComponent = () => {
     const { handleSubmit, register, formState: { errors, isValid } } = useForm<IPropsForm>({
         mode: "all", resolver: joiResolver(postValidator)
     });
-const [posts, setPosts] = useState<IPropsForm[]>([]);
+
+    const [posts, setPosts] = useState<IPropsForm[]>([]);
+
     useEffect(() => {
         postsOfUsers().then(value => setPosts([...value]))
     }, []);
 
-
     const cumstorHandle = async (formDataProps: IPropsForm) => {
-        await fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify(formDataProps),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((json) => setPosts(prevPosts => [...prevPosts, json]));
+         postAdd(formDataProps).then(value  =>
+        setPosts( [ ...value]));
 
     };
-
     return (
         <div className={styles.formContainer}>
             <h1>Form</h1>
@@ -50,13 +43,15 @@ const [posts, setPosts] = useState<IPropsForm[]>([]);
 
             <ul>
                 <div>Posts</div>
-                {posts.map(post => <div>
-                    <li> Title:{post.title}</li>
-                    <li>Body:{post.body}</li>
-                    <li>userId: {post.userId}</li></div>)}
+                {posts.map((post) => (
+                    <div key={post.id}>
+                        <li>Title: {post.title}</li>
+                        <li>Body: {post.body}</li>
+                        <li>userId: {post.userId}</li>
+                    </div>
+                ))}
             </ul>
         </div>
     );
 };
-
 export default FormComponent;
