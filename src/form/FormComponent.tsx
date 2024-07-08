@@ -1,28 +1,23 @@
-import React, { FC, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { userValidator } from "../validators/user.validator";
+import { postValidator } from "../validators/post.validator";
 import styles from './FormComponent.module.css';
 import {postsOfUsers} from "../service/API";
-
-interface IPropsForm {
-    title: string,
-    body: string,
-    userId: number,
-    id: number
-}
+import {IPropsForm} from '../module/IPropsForm';
 
 const FormComponent = () => {
     const { handleSubmit, register, formState: { errors, isValid } } = useForm<IPropsForm>({
-        mode: "all", resolver: joiResolver(userValidator)
+        mode: "all", resolver: joiResolver(postValidator)
     });
+const [posts, setPosts] = useState<IPropsForm[]>([]);
+    useEffect(() => {
+        postsOfUsers().then(value => setPosts([...value]))
+    }, []);
 
-    const [posts, setPosts] = useState<IPropsForm[]>([]);
-    postsOfUsers().then((value:IPropsForm[]) =>{
-        setPosts([...value])
-    });
+
     const cumstorHandle = async (formDataProps: IPropsForm) => {
-        await fetch('https://jsonplaceholder.typicode.com/posts/101', {
+        await fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             body: JSON.stringify(formDataProps),
             headers: {
@@ -36,6 +31,7 @@ const FormComponent = () => {
 
     return (
         <div className={styles.formContainer}>
+            <h1>Form</h1>
             <form onSubmit={handleSubmit(cumstorHandle)}>
                 <div><label className={styles.label}>title:
                     {errors.title && <div className={styles.error}>{errors.title.message}</div>}
@@ -51,16 +47,15 @@ const FormComponent = () => {
                 </label></div>
                 <div className={styles.button}><button disabled={!isValid}>send</button></div>
             </form>
+
             <ul>
                 <div>Posts</div>
                 {posts.map(post => <div>
-
                     <li> Title:{post.title}</li>
                     <li>Body:{post.body}</li>
                     <li>userId: {post.userId}</li></div>)}
             </ul>
-
-            </div>
+        </div>
     );
 };
 

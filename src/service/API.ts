@@ -6,6 +6,6 @@ let axiosInstance = axios.create({
     headers:{"Content-Type":"application/json"}
 });
 const postsOfUsers = async () => {
-    return await axiosInstance.get('/posts/101').then((response)=>response.data);
+    return await axiosInstance.get('/posts').then((response)=>response.data);
 }
 export {postsOfUsers}
