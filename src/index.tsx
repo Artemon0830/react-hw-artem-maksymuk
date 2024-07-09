@@ -17,12 +17,11 @@ const router = createBrowserRouter([
         errorElement:<CustomErrorLayout/>,
     children:[
         {index: true, element:<HomePage/>},
-        {path:'users', element:<UsersPage/>},
+        {path:'users', element:<UsersPage/>,children:[]},
         {path:'posts', element:<PostsPage/>},
         {path:'comments', element:<CommentsPage/>},
 
     ]},
-
 ]);
 root.render(
 <RouterProvider router={router}/>

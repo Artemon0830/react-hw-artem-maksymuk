@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import UsersComponents from "../components/UsersComponents";
+import {IUsers} from "../modules/IUsers";
+import {getOfUsers} from "../servise/API";
 
 
-const UsersPage = () => {
+const UsersPage:FC = () => {
+    const [users, setUsers] = useState<IUsers[]>([])
+    useEffect(() => {
+        getOfUsers().then((value:IUsers[]) =>{
+            setUsers(value)
+        });
+    }, []);
     return (
         <div>
-
-            <UsersComponents user={}/>
+<UsersComponents users={users}/>
         </div>
     );
 };
