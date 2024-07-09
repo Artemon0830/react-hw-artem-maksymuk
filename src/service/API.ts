@@ -15,7 +15,7 @@ let instance = axios.create({baseURL:'https://jsonplaceholder.typicode.com',
 const postsOfUsers = async ():Promise<IPropsForm[]> => {
     return await axiosInstance.get('/posts').then((response :AxiosResponse<IPropsForm[]>)=>response.data);
 }
-const postAdd = async (formDataProps: IPropsForm):Promise<IPropsForm[]> => {
-    return await instance.get('/posts').then((response :AxiosResponse<IPropsForm[]>)=>response.data);
+const postAdd = async ():Promise<IPropsForm[]> => {
+    return await instance.post('/posts').then((response :AxiosResponse<IPropsForm[]>)=>response.data);
 }
 export {postsOfUsers,postAdd};

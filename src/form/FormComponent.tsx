@@ -18,8 +18,7 @@ const FormComponent = () => {
     }, []);
 
     const cumstorHandle = async (formDataProps: IPropsForm) => {
-         postAdd(formDataProps).then(value  =>
-        setPosts( [ ...value]));
+         postAdd().then(value=> setPosts([...value]));
 
     };
     return (
@@ -54,4 +53,4 @@ const FormComponent = () => {
         </div>
     );
 };
-export default FormComponent;
+export {FormComponent};
