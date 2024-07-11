@@ -13,7 +13,9 @@ const PostsPage = () => {
     }, []);
     return (
         <div>
+            <hr/>
             <Outlet/>
+            <hr/>
             <PostsComponents posts={posts}/>
         </div>
     );

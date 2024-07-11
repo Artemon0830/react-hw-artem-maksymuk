@@ -11,7 +11,7 @@ const PostsComponents:FC<IProps> = ({posts}) => {
             {
                 posts.map(post =><div key={post.id} >
                     <h2> post id : {post.id}</h2>
-                    <p>title : {post.title}</p>
+                    <Link to={post.id.toString()}>{post.title}</Link>
                     <p> body : {post.body}</p>
                     <p> userId : {post.userId}</p>
                 </div> )
