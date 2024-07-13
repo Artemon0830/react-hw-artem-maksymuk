@@ -16,11 +16,12 @@ const getCommentsOfPost=async():Promise<IComments[]>=>{
     return await axiosInstance.get('/comments').then (response=> response.data)
 }
 // POST PAGE
-const getPostPage =async (userId:number):Promise<IUsers>=>{
-    return await axiosInstance.get('/users/'+ userId).then(response =>response.data)
+const getPostPageById =async (id:string):Promise<IUsers>=>{
+    return await axiosInstance.get('/users/'+ id).then(response =>response.data)
 
 }
-export {getOfUsers,getPostsOfUser,getCommentsOfPost,getPostPage}
+
+export {getOfUsers,getPostsOfUser,getCommentsOfPost,getPostPageById}
 
 
 
