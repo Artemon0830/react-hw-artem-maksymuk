@@ -4,8 +4,9 @@ import HomePage from "../Pages/HomePage";
 import UsersPage from "../Pages/UsersPage";
 import PostsPage from "../Pages/PostsPage";
 import UserPage from "../Pages/UserPage";
-import SortedPage from "../Pages/SortedPage";
+
 import MainLayout from "../Layouts/MainLayout";
+import CommentPage from "../Pages/CommentPage";
 
 export let router = createBrowserRouter([
     {
@@ -16,8 +17,8 @@ export let router = createBrowserRouter([
             {index: true, element: <HomePage/>},
             {path: 'users', element: <UsersPage/>},
             {path: 'posts', element: <PostsPage/>},
+            {path: 'comment', element: <CommentPage/>},
             {path: 'users/:id', element: <UserPage/>},
-            {path: 'users/sort', element: <SortedPage/>},
         ]
     }
 ]);

@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import
+    React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {userAction} from "../redux/slice/userSlice";
@@ -18,7 +19,7 @@ const UserPage = () => {
     return (
         <div>
             <h1>UserPage</h1>
-            <UserComponent user={user}/>}
+            {user && <UserComponent user={user}/>}
 
         </div>
     );
